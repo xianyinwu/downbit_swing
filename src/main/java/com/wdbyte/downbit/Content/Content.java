@@ -25,10 +25,10 @@ public class Content {
         PROTOCAL_SET.add("magnet");
     }
 
-    public static String endpoint = "http://oss-cn-beijing.aliyuncs.com";
-    public static String accessKeyId = "LTAI5tPTENemz9MT516FNqf1";
-    public static String accessKeySecret = "E8KMtfuiGmIfv8SVUvAalcJZVxp8Bc";
-    public static String bucketName = "xianyinwu";
+    public static String endpoint = "";
+    public static String accessKeyId = "";
+    public static String accessKeySecret = "";
+    public static String bucketName = "";
 
     public static String msg="功能：1.查询阿里云文件目录；2.下载阿里云文件；3.下载其他资源；4.删除指定阿里云文件；5.上传文件到阿里云盘；6.拆分视频；7.在线浏览的视频；8.在线浏览图片";
 
