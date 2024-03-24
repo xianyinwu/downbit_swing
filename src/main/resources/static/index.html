@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>操作界面</title>
+</head>
+<body>
+<h1>操作界面</h1>
+<button onclick="queryBucket()">查询阿里云文件目录</button>
+<button onclick="downloadAliyun()">下载阿里云文件</button>
+<button onclick="downloadOther()">下载其他资源</button>
+<button onclick="deleteFile()">删除指定阿里云文件</button>
+<button onclick="uploadFile()">上传文件到阿里云盘</button>
+<button onclick="splitVideo()">拆分视频</button>
+<button onclick="playVideo()">在线浏览视频</button>
+<button onclick="playImage()">在线浏览图片</button>
+<button onclick="openEditor()">打开文件编辑器</button>
+
+<div id="output"></div>
+
+<script>
+    function queryBucket() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "正在查询阿里云文件目录：<br>";
+
+        // 发送请求到后端查询阿里云文件目录
+        fetch("/queryBucket")
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "查询失败：" + error;
+            });
+    }
+
+    function downloadAliyun() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "下载阿里云文件：<br>";
+
+        // 发送请求到后端下载阿里云文件
+        fetch("/downloadAliyun")
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "下载失败：" + error;
+            });
+    }
+
+    function downloadOther() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "下载其他资源：<br>";
+
+        // 发送请求到后端下载其他资源
+        fetch("/downloadOther")
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "下载失败：" + error;
+            });
+    }
+
+    function deleteFile() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "删除指定阿里云文件：<br>";
+
+        var fileName = prompt("请输入需要删除的文件名称：");
+
+        // 发送请求到后端删除指定阿里云文件
+        fetch("/deleteFile?fileName=" + fileName)
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "删除失败：" + error;
+            });
+    }
+
+    function uploadFile() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "上传文件到阿里云盘：<br>";
+
+        var fileName = prompt("请输入需要上传的文件名称：");
+
+        // 发送请求到后端上传文件到阿里云盘
+        fetch("/uploadFile?fileName=" + fileName)
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "上传失败：" + error;
+            });
+    }
+
+    function splitVideo() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "拆分视频：<br>";
+
+        var videoName = prompt("请输入需要拆分的视频名称：");
+
+        // 发送请求到后端拆分视频
+        fetch("/splitVideo?videoName=" + videoName)
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "拆分失败：" + error;
+            });
+    }
+
+    function playVideo() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "在线浏览视频：<br>";
+
+        var videoInput = prompt("请输入需要在线浏览的视频名称或视频下载链接：");
+
+        // 发送请求到后端在线浏览视频
+        fetch("/playVideo?videoInput=" + videoInput)
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "播放失败：" + error;
+            });
+    }
+
+    function playImage() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "在线浏览图片：<br>";
+
+        var imageInput = prompt("请输入需要在线浏览的图片名称或下载链接：");
+
+        // 发送请求到后端在线浏览图片
+        fetch("/playImage?imageInput=" + imageInput)
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "播放失败：" + error;
+            });
+    }
+
+    function openEditor() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "已打开文件编辑器：<br>";
+
+        // 发送请求到后端打开文件编辑器
+        fetch("/openEditor")
+            .then(response => response.text())
+            .then(data => {
+                outputDiv.innerHTML += data;
+            })
+            .catch(error => {
+                outputDiv.innerHTML += "打开失败：" + error;
+            });
+    }
+</script>
+</body>
+</html>
